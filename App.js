@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import Header from './components/header';
+import Items from './components/items';
+import Add from './components/add';
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -9,16 +12,33 @@ export default function App() {
     {text: 'play on the switch', key: '3'}
   ]);
 
+  const pressHandler = (key) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.key != key);
+    });
+  }
+
+  const submitHandler = (text) => {
+    setTodos((prevTodos) => {
+      return [
+        {text: text, key: Math.random().toString()},
+        ...prevTodos
+      ];
+    });
+  }
+
   return (
     <View style={styles.container}>
       {/**Header */}
+      <Header/>
       <View style = {styles.content}>
         {/**ToDo Form */}
+        <Add submitHandler = {submitHandler}/>
         <View stle = {styles.lists}>
           <FlatList
             data={todos}
             renderItem={({ item }) => (
-              <Text>{item.text}</Text>
+              <Items item = {item} pressHandler={pressHandler}/>
             )}
           />
         </View>
@@ -38,6 +58,6 @@ const styles = StyleSheet.create({
     padding: 40,
   },
   lists: {
-    marginTop: 20,
+    marginTop: 80,
   }
 });
