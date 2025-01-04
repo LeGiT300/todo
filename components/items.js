@@ -9,7 +9,7 @@ const Items = ({item, pressHandler}) => {
       <View style = {styles.item}>
 
         <MaterialIcons name='delete' size={18} color= '#333'/>
-      <Text>{item.text}</Text>
+      <Text style = {styles.itemText}>{item.text}</Text>
       </View>
     </TouchableOpacity>
   )
@@ -26,5 +26,8 @@ const styles = StyleSheet.create({
         borderStyle: 'dashed',
         borderRadius: 10,
         flexDirection: 'row'
+    },
+    itemText: {
+      marginLeft: 10
     }
 })
