@@ -18,6 +18,14 @@ A simple and intuitive ToDo application built using React Native. The app allows
 7. [Future Improvements](#future-improvements)
 
 ---
+## App Preview
+
+Here's a preview of how the app looks in action:
+
+![ToDo App Preview]:
+(../assets/preview.png)
+(../assets/preview2.png)
+
 
 ## **Overview**
 
